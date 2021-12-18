@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <option name="USE_RELEASE_OPTION" value="false" />
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="common-mybatis" />
+        <module name="snow-demo" />
+        <module name="snow-gateway" />
+        <module name="snow-job" />
+        <module name="snow-auth" />
+        <module name="common-redis" />
+        <module name="snow-system" />
+        <module name="snow-meta" />
+        <module name="common-core" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="common-core" options="" />
+      <module name="common-mybatis" options="" />
+      <module name="common-redis" options="" />
+      <module name="snow-auth" options="" />
+      <module name="snow-common" options="" />
+      <module name="snow-demo" options="" />
+      <module name="snow-gateway" options="" />
+      <module name="snow-job" options="" />
+      <module name="snow-meta" options="" />
+      <module name="snow-system" options="" />
+    </option>
+  </component>
+</project>
