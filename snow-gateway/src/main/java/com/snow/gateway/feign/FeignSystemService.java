@@ -1,4 +1,4 @@
-package com.snow.demo.feign;
+package com.snow.gateway.feign;
 
 import api.CommonResult;
 import constant.ServiceInfoConstant;
@@ -13,11 +13,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 @FeignClient(ServiceInfoConstant.SERVICE_NAME_SYSTEM)
 public interface FeignSystemService {
 
-    @PostMapping(value = "admin/add")
+    @PostMapping(value = "user/add")
     CommonResult<Integer> add(@RequestBody UserReq userReq);
 
 
-    @GetMapping(value = "admin/findUserById")
+    @GetMapping(value = "user/findUserById")
     CommonResult<UserDto> findUserById(@RequestParam(value="userId") Long userId);
 
+
+    @GetMapping(value = "user/findUserByUsername")
+    CommonResult<UserDto> findUserByUsername(@RequestParam(value="username") String username);
 }

@@ -56,6 +56,14 @@
             <artifactId>spring-cloud-starter-bootstrap</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.snow</groupId>
+            <artifactId>common-redis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.snow</groupId>
+            <artifactId>common-core</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

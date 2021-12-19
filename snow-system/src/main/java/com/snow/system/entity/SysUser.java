@@ -1,18 +1,17 @@
-package dto;
+package com.snow.system.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
+
 @Data
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
-public class UserDto implements Serializable {
+public class SysUser {
+
+    @TableId(type = IdType.AUTO)
     private Long id;
 
     private String username;
@@ -33,10 +32,12 @@ public class UserDto implements Serializable {
 
     private Long deptId;
 
+    @TableLogic(value = "0", delval = "1")
     private Integer deleted;
 
     private LocalDateTime createTime;
 
     private LocalDateTime updateTime;
+
 
 }
