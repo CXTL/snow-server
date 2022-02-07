@@ -4,12 +4,12 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: http://192.168.40.221:8848
-        namespace:
+        server-addr: ${nacos.host}:${nacos.port}
+        namespace: ${nacos.namespace}
       config:
-        server-addr: ${spring.cloud.nacos.discovery.server-addr}
+        server-addr: ${nacos.host}:${nacos.port}
         file-extension: yaml
-        namespace: 9ad275b1-74f8-4b30-b9f6-92dac3820f78
+        namespace: ${nacos.namespace}
         # 公共配置
         shared-configs[0]:
           data-id: snow-common.yaml

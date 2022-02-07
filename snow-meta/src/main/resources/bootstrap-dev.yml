@@ -4,7 +4,7 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: http://192.168.40.221:8848
+        server-addr: http://172.17.22.14:8848
         namespace: 9ad275b1-74f8-4b30-b9f6-92dac3820f78
       config:
         server-addr: ${spring.cloud.nacos.discovery.server-addr}

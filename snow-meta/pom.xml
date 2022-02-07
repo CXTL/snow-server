@@ -12,7 +12,11 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>snow-meta</name>
     <description>snow-meta</description>
+    <packaging>jar</packaging>
+
+
     <dependencies>
+
         <!--springboot-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -62,19 +66,10 @@
             <groupId>com.snow</groupId>
             <artifactId>common-core</artifactId>
         </dependency>
+
+
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>com.spotify</groupId>
-                <artifactId>docker-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
-
 </project>
+
+
