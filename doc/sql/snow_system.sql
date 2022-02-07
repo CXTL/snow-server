@@ -19,8 +19,8 @@ CREATE TABLE `sys_dept`  (
   `sort` int NULL DEFAULT 0 COMMENT '显示顺序',
   `status` tinyint(1) NULL DEFAULT 1 COMMENT '状态：1-正常 0-禁用',
   `deleted` tinyint(1) NULL DEFAULT 0 COMMENT '删除状态：1-删除 0-未删除',
-  `gmt_create` datetime NULL DEFAULT NULL COMMENT '创建时间',
-  `gmt_modified` datetime NULL DEFAULT NULL COMMENT '更新时间',
+  `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
+  `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '部门表' ROW_FORMAT = DYNAMIC;
 
@@ -41,8 +41,8 @@ CREATE TABLE `sys_dict`  (
   `code` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' COMMENT '类型编码',
   `status` tinyint(1) NULL DEFAULT 0 COMMENT '状态（0-正常 ,1-停用）',
   `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
-  `gmt_create` datetime NULL DEFAULT NULL COMMENT '创建时间',
-  `gmt_modified` datetime NULL DEFAULT NULL COMMENT '更新时间',
+  `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
+  `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `type_code`(`code`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 26 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '字典类型表' ROW_FORMAT = DYNAMIC;
@@ -68,8 +68,8 @@ CREATE TABLE `sys_dict_item`  (
   `status` tinyint(1) NULL DEFAULT 0 COMMENT '状态（0 停用 1正常）',
   `defaulted` tinyint(1) NULL DEFAULT 0 COMMENT '是否默认（0否 1是）',
   `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' COMMENT '备注',
-  `gmt_create` datetime NULL DEFAULT NULL COMMENT '创建时间',
-  `gmt_modified` datetime NULL DEFAULT NULL COMMENT '更新时间',
+  `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
+  `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 22 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '字典数据表' ROW_FORMAT = DYNAMIC;
 
@@ -110,8 +110,8 @@ CREATE TABLE `sys_menu`  (
   `sort` int NULL DEFAULT 0 COMMENT '排序',
   `visible` tinyint(1) NULL DEFAULT 1 COMMENT '状态：0-禁用 1-开启',
   `redirect` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' COMMENT '跳转路径',
-  `gmt_create` datetime NULL DEFAULT NULL COMMENT '创建时间',
-  `gmt_modified` datetime NULL DEFAULT NULL COMMENT '更新时间',
+  `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
+  `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 20 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '菜单管理' ROW_FORMAT = DYNAMIC;
 
@@ -176,8 +176,8 @@ CREATE TABLE `sys_permission`  (
   `menu_id` int NULL DEFAULT NULL COMMENT '菜单模块ID\r\n',
   `url_perm` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'URL权限标识',
   `btn_perm` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '按钮权限标识',
-  `gmt_create` datetime NULL DEFAULT NULL,
-  `gmt_modified` datetime NULL DEFAULT NULL,
+  `create_time` datetime NULL DEFAULT NULL,
+  `update_time` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `id`(`id`, `name`) USING BTREE,
   INDEX `id_2`(`id`, `name`) USING BTREE
@@ -203,8 +203,8 @@ CREATE TABLE `sys_role`  (
   `sort` int NULL DEFAULT NULL COMMENT '显示顺序',
   `status` tinyint(1) NULL DEFAULT 1 COMMENT '角色状态：0-正常；1-停用',
   `deleted` tinyint(1) NOT NULL DEFAULT 0 COMMENT '逻辑删除标识：0-未删除；1-已删除',
-  `gmt_create` datetime NULL DEFAULT NULL COMMENT '更新时间',
-  `gmt_modified` datetime NULL DEFAULT NULL COMMENT '创建时间',
+  `create_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
+  `update_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `name`(`name`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '角色表' ROW_FORMAT = DYNAMIC;
@@ -282,8 +282,8 @@ CREATE TABLE `sys_user`  (
   `status` tinyint(1) NULL DEFAULT 1 COMMENT '用户状态：1-正常 0-禁用',
   `email` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '用户邮箱',
   `deleted` tinyint(1) NULL DEFAULT 0 COMMENT '逻辑删除标识：0-未删除；1-已删除',
-  `gmt_create` datetime NULL DEFAULT NULL COMMENT '创建时间',
-  `gmt_modified` datetime NULL DEFAULT NULL COMMENT '更新时间',
+  `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
+  `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `login_name`(`username`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '用户信息表' ROW_FORMAT = DYNAMIC;

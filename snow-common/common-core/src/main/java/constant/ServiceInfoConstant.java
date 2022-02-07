@@ -1,7 +1,5 @@
 package constant;
 
-import lombok.Getter;
-
 public class ServiceInfoConstant {
 
     public final static String SERVICE_NAME_DEMO = "snow-demo";
