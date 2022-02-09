@@ -37,9 +37,8 @@
         <guava.version>28.1-jre</guava.version>
         <fastjson.version>1.2.60</fastjson.version>
         <starter-bootstrap.version>3.0.3</starter-bootstrap.version>
-        <b.version>1.2.60</b.version>
-        <security-jwt.version>1.0.10.RELEASE</security-jwt.version>
-        <cloud-security.version>2.2.2.RELEASE</cloud-security.version>
+
+        <cloud-security.version>2.3.3.RELEASE</cloud-security.version>
         <servlet-api.version>9.0.38</servlet-api.version>
         <commons-collections4.version>4.4</commons-collections4.version>
         <commons-lang.version>2.6</commons-lang.version>
@@ -58,6 +57,12 @@
             <dependency>
                 <groupId>com.snow</groupId>
                 <artifactId>common-core</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.snow</groupId>
+                <artifactId>common-mybatis</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
             </dependency>
 
@@ -99,12 +104,6 @@
                 <scope>import</scope>
             </dependency>
 
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-starter-security</artifactId>
-                <version>${cloud-security.version}</version>
-            </dependency>
-
             <!-- 数据库连接池 -->
             <dependency>
                 <groupId>com.alibaba</groupId>
@@ -122,21 +121,13 @@
                 <artifactId>pagehelper-spring-boot-starter</artifactId>
                 <version>${pagehelper-spring-boot-starter.version}</version>
             </dependency>
-            <dependency>
-                <groupId>tk.mybatis</groupId>
-                <artifactId>mapper-spring-boot-starter</artifactId>
-                <version>${tk.mybatis.version}</version>
-            </dependency>
+
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
                 <version>${mybatis.plus.version}</version>
             </dependency>
-            <dependency>
-                <groupId>org.apache.commons</groupId>
-                <artifactId>commons-collections4</artifactId>
-                <version>${commons-collections4.version}</version>
-            </dependency>
+
             <dependency>
                 <groupId>commons-lang</groupId>
                 <artifactId>commons-lang</artifactId>
@@ -181,6 +172,24 @@
                 <artifactId>spring-cloud-loadbalancer</artifactId>
                 <version>3.0.2</version>
             </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-oauth2</artifactId>
+                <version>2.2.5.RELEASE</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>2.6.1</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>2.6.1</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 

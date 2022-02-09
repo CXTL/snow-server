@@ -1,6 +1,5 @@
 package com.snow.demo.service;
 
-import dto.UserDto;
 import dto.UserReq;
 
 import java.util.List;

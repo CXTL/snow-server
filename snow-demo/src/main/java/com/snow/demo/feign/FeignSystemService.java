@@ -2,7 +2,6 @@ package com.snow.demo.feign;
 
 import api.CommonResult;
 import constant.ServiceInfoConstant;
-import dto.UserDto;
 import dto.UserReq;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;

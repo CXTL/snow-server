@@ -5,7 +5,6 @@ import com.github.pagehelper.PageHelper;
 import com.snow.demo.entity.UmsAdmin;
 import com.snow.demo.mapper.DemoMapper;
 import com.snow.demo.service.DemoService;
-import dto.UserDto;
 import dto.UserReq;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,7 +1,9 @@
 package com.snow.system.service;
 
-import dto.UserDto;
+import domain.UserDto;
 
-public interface UserService {
+public interface SysUserService {
+
     UserDto findUserByUsername(String username);
+
 }

@@ -3,7 +3,6 @@ package com.snow.demo.controller;
 import api.CommonPage;
 import api.CommonResult;
 import com.snow.demo.service.DemoService;
-import dto.UserDto;
 import dto.UserReq;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
