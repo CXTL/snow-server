@@ -1,6 +1,6 @@
 package constant;
 
-public class ServiceInfoConstant {
+public interface ServiceInfoConstant {
 
     public final static String SERVICE_NAME_DEMO = "snow-demo";
 
