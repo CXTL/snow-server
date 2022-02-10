@@ -186,9 +186,9 @@ CREATE TABLE `sys_permission`  (
 -- ----------------------------
 -- Records of sys_permission
 -- ----------------------------
-INSERT INTO `sys_permission` VALUES (1, '查看用户', 2, 'GET:/youlai-admin/api/v1/users/*', 'sys:user:view', '2021-02-02 14:16:07', '2021-06-16 22:25:24');
-INSERT INTO `sys_permission` VALUES (2, '编辑用户', 2, 'PUT:/youlai-admin/users/*', 'sys:user:edit', '2021-06-16 16:19:44', '2021-06-16 23:36:53');
-INSERT INTO `sys_permission` VALUES (3, '新增用户', 2, 'POST:/youlai-admin/api/v1/users', 'sys:user:add', '2021-06-16 23:36:37', '2021-06-16 23:37:03');
+INSERT INTO `sys_permission` VALUES (1, '查看用户', 2, 'system/user/*', 'sys:user:view', '2021-02-02 14:16:07', '2021-06-16 22:25:24');
+INSERT INTO `sys_permission` VALUES (2, '查看数据源列表', 2, 'meta/database/*', 'sys:user:edit', '2021-06-16 16:19:44', '2021-06-16 23:36:53');
+INSERT INTO `sys_permission` VALUES (3, '查看调度列表', 2, 'job/task/*', 'sys:user:add', '2021-06-16 23:36:37', '2021-06-16 23:37:03');
 INSERT INTO `sys_permission` VALUES (4, '删除用户', 2, 'DELETE:/youlai-admin/api/v1/users/*', 'sys:user:delete', '2021-06-16 23:43:54', '2021-06-16 23:43:54');
 INSERT INTO `sys_permission` VALUES (5, '路由列表', 4, 'GET:/youlai-admin/api/v1/menus/route', 'sys:route:query', NULL, NULL);
 
@@ -291,9 +291,9 @@ CREATE TABLE `sys_user`  (
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES (1, 'root', '有来技术', 0, '$2a$10$xVWsNOhHrCxh5UbpCE7/HuJ.PAOKcYAqRxD2CO2nVnJS.IAXkr5aq', NULL, '', '17621590365', 1, 'youlaitech@163.com', 0, NULL, NULL);
-INSERT INTO `sys_user` VALUES (2, 'admin', '系统管理员', 1, '$2a$10$yJSqqr6sTxNuYtA6EKcVUe2I4USFCzJ29sNcRrBvtAkSYcNg5ydQ6', 2, 'https://gitee.com/haoxr/image/raw/master/20210605215800.png', '17621210366', 1, 'youlaitech@163.com', 0, '2019-10-10 13:41:22', '2021-06-06 23:41:35');
-INSERT INTO `sys_user` VALUES (3, 'test', '测试小用户', 1, '$2a$10$MPJkNw.hKT/fZOgwYP8q9eu/rFJJDsNov697AmdkHNJkpjIpVSw2q', 3, 'https://gitee.com/haoxr/image/raw/master/20210605215800.png', '17621210366', 1, 'youlaitech@163.com', 0, '2021-06-05 01:31:29', '2021-06-05 01:31:29');
+INSERT INTO `sys_user` VALUES (1, 'root', '有来技术', 0, '$2a$10$vY0/BGH62iZWcFkrjkaqyO021foRh7FxKQBG55p7VfbLfN7951Kxq', NULL, '', '17621590365', 1, 'youlaitech@163.com', 0, NULL, NULL);
+INSERT INTO `sys_user` VALUES (2, 'admin', '系统管理员', 1, '$2a$10$vY0/BGH62iZWcFkrjkaqyO021foRh7FxKQBG55p7VfbLfN7951Kxq', 2, 'https://gitee.com/haoxr/image/raw/master/20210605215800.png', '17621210366', 1, 'youlaitech@163.com', 0, '2019-10-10 13:41:22', '2021-06-06 23:41:35');
+INSERT INTO `sys_user` VALUES (3, 'test', '测试小用户', 1, '$2a$10$vY0/BGH62iZWcFkrjkaqyO021foRh7FxKQBG55p7VfbLfN7951Kxq', 3, 'https://gitee.com/haoxr/image/raw/master/20210605215800.png', '17621210366', 1, 'youlaitech@163.com', 0, '2021-06-05 01:31:29', '2021-06-05 01:31:29');
 
 -- ----------------------------
 -- Table structure for sys_user_role

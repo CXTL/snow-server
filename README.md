@@ -18,3 +18,8 @@ SpringCloudAlibaba + SpringCloud + Nacos + SpringSecurity + Sentinel + Oauth2.0 
 -Dspring.profiles.active=dev
 
 ```
+
+> 登录
+http://localhost:18080/system/user/login
+{"username":"admin","password":"123456"}
+
