@@ -37,7 +37,7 @@
         <guava.version>28.1-jre</guava.version>
         <fastjson.version>1.2.60</fastjson.version>
         <starter-bootstrap.version>3.0.3</starter-bootstrap.version>
-
+        <hutool.version>5.4.0</hutool.version>
         <cloud-security.version>2.3.3.RELEASE</cloud-security.version>
         <servlet-api.version>9.0.38</servlet-api.version>
         <commons-collections4.version>4.4</commons-collections4.version>
@@ -188,6 +188,30 @@
                 <groupId>io.springfox</groupId>
                 <artifactId>springfox-swagger-ui</artifactId>
                 <version>2.6.1</version>
+            </dependency>
+
+            <!--Hutool Java工具包-->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>2.13.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>2.13.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>2.13.0</version>
             </dependency>
 
         </dependencies>
