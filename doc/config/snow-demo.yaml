@@ -1,0 +1,69 @@
+server:
+  port: 18080
+
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true # 启用服务发现
+          lower-case-service-id: true
+      routes:
+        - id: 认证中心
+          uri: lb://snow-auth
+          predicates:
+            - Path=/auth/**
+          filters:
+            - StripPrefix=1
+        - id: 系统服务
+          uri: lb://snow-system
+          predicates:
+            - Path=/system/**
+          filters:
+            - StripPrefix=1
+        - id: 测试服务
+          uri: lb://snow-demo
+          predicates:
+            - Path=/demo/**
+          filters:
+            - StripPrefix=1
+        - id: 元数据服务
+          uri: lb://snow-meta
+          predicates:
+            - Path=/meta/**
+          filters:
+            - StripPrefix=1
+        - id: 调度服务
+          uri: lb://snow-job
+          predicates:
+            - Path=/job/**
+          filters:
+            - StripPrefix=1
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: 'http://localhost:18080/auth/rsa/publicKey' #配置RSA的公钥访问地址
+secure:
+  ignore:
+    urls: #配置白名单路径
+      - "/doc.html"
+      - "/swagger-resources/**"
+      - "/swagger/**"
+      - "/*/*.js"
+      - "/*/*.css"
+      - "/*/*.png"
+      - "/*/*.ico"
+      - "/webjars/springfox-swagger-ui/**"
+      - "/actuator/**"
+      - "/auth/oauth/token"
+      - "/auth/rsa/publicKey"
+      - "/system/user/login"
+management: #开启SpringBoot Admin的监控
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
