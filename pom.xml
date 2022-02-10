@@ -15,7 +15,7 @@
         <module>snow-auth</module>
         <module>snow-job</module>
         <module>snow-meta</module>
-        <module>snow-demo</module>
+        <module>snow-gateway</module>
     </modules>
 
 
