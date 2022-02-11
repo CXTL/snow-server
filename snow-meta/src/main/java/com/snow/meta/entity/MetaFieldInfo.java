@@ -2,11 +2,17 @@ package com.snow.meta.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class MetaFieldInfo {
 
     @TableId(type = IdType.AUTO)
@@ -51,5 +57,13 @@ public class MetaFieldInfo {
      *备注
      */
     private String description;
+    /**
+     *主键标识：0-不是主键；1-是主键
+     */
+    private Integer primaryKeyFlag;
+    /**
+     *是否为null标识：0-不可为空；1-可为空
+     */
+    private Integer nullFlag;
 
 }

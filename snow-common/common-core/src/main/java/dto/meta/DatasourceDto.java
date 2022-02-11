@@ -1,7 +1,5 @@
-package com.snow.meta.entity;
+package dto.meta;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,14 +7,12 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
-
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-public class MetaDatasourceInfo {
+public class DatasourceDto {
 
-    @TableId(type = IdType.AUTO)
     private Long id;
     /**
      *数据源名称
@@ -78,6 +74,4 @@ public class MetaDatasourceInfo {
      *备注
      */
     private String description;
-
-
 }

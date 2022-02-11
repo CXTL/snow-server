@@ -2,7 +2,6 @@ package com.snow.system.service.impl;
 
 import api.CommonResult;
 import cn.hutool.core.util.StrUtil;
-import cn.hutool.crypto.digest.BCrypt;
 import com.alibaba.nacos.common.utils.CollectionUtils;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.snow.system.entity.SysRole;

@@ -2,7 +2,7 @@ package constant;
 
 
 /**
- * JdbcConstants
+ * JdbcConstant
  *
  */
 public interface JdbcConstant {
