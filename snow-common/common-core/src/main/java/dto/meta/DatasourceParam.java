@@ -45,9 +45,9 @@ public class DatasourceParam {
      */
     private String port;
     /**
-     *数据源类型 1:mysql 2:oracle 3:pgsql 4:hive 5:hbase
+     *数据源类型 mysql oracle pgsql hive hbase
      */
-    private Integer type;
+    private String type;
     /**
      *备注
      */
