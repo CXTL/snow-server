@@ -33,7 +33,6 @@
         <pagehelper-spring-boot-starter.version>1.2.12</pagehelper-spring-boot-starter.version>
         <tk.mybatis.version>2.1.5</tk.mybatis.version>
         <mybatis.plus.version>3.3.2</mybatis.plus.version>
-        <swagger2.version>2.8.0</swagger2.version>
         <guava.version>28.1-jre</guava.version>
         <fastjson.version>1.2.60</fastjson.version>
         <starter-bootstrap.version>3.0.3</starter-bootstrap.version>
@@ -53,6 +52,7 @@
         <jtds.version>1.3.1</jtds.version>
         <ojdbc6.version>11.2.0.4</ojdbc6.version>
         <ngdbc.version>2.3.48</ngdbc.version>
+        <knife4j.version>3.0.3</knife4j.version>
     </properties>
 
 
@@ -138,17 +138,7 @@
                 <artifactId>commons-lang</artifactId>
                 <version>${commons-lang.version}</version>
             </dependency>
-            <!--swagger-ui-->
-            <dependency>
-                <groupId>io.springfox</groupId>
-                <artifactId>springfox-swagger2</artifactId>
-                <version>${swagger2.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.springfox</groupId>
-                <artifactId>springfox-swagger-ui</artifactId>
-                <version>${swagger2.version}</version>
-            </dependency>
+
 
             <!-- guava-->
             <dependency>
@@ -184,16 +174,6 @@
                 <version>2.2.5.RELEASE</version>
             </dependency>
 
-            <dependency>
-                <groupId>io.springfox</groupId>
-                <artifactId>springfox-swagger2</artifactId>
-                <version>2.6.1</version>
-            </dependency>
-            <dependency>
-                <groupId>io.springfox</groupId>
-                <artifactId>springfox-swagger-ui</artifactId>
-                <version>2.6.1</version>
-            </dependency>
 
             <!--Hutool Java工具包-->
             <dependency>
@@ -224,6 +204,12 @@
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-bootstrap</artifactId>
                 <version>3.0.3</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-spring-boot-starter</artifactId>
+                <version>${knife4j.version}</version>
             </dependency>
 
         </dependencies>

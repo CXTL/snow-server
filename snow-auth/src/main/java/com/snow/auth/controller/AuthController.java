@@ -23,8 +23,8 @@ import java.util.Map;
 /**
  * 自定义Oauth2获取令牌接口
  */
+@Api(tags = "认证中心登录认证")
 @RestController
-@Api(tags = "AuthController", description = "认证中心登录认证")
 @RequestMapping("/oauth")
 public class AuthController {
 

@@ -4,6 +4,7 @@ import api.CommonResult;
 import com.snow.system.dto.UmsAdminLoginParam;
 import com.snow.system.service.SysUserService;
 import domain.UserDto;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -14,6 +15,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+@Api(tags = "用户信息API")
 @RestController
 @RequestMapping(value = "user")
 public class SysUserController {
@@ -21,21 +23,20 @@ public class SysUserController {
     @Autowired
     private SysUserService sysUserService;
 
+    @ApiOperation(value = "根据用户名称获取用户信息")
     @GetMapping(value = "findUserByUsername")
     public CommonResult<UserDto> findUserByUsername(@RequestParam(value="username") String username){
         return CommonResult.success(sysUserService.findUserByUsername(username));
     }
 
     @ApiOperation(value = "登录以后返回token")
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    @ResponseBody
+    @PostMapping(value = "/login")
     public CommonResult login(@Validated @RequestBody UmsAdminLoginParam umsAdminLoginParam) {
         return sysUserService.login(umsAdminLoginParam.getUsername(),umsAdminLoginParam.getPassword());
     }
 
     @ApiOperation(value = "获取当前登录用户信息")
-    @RequestMapping(value = "/info", method = RequestMethod.GET)
-    @ResponseBody
+    @GetMapping(value = "/info")
     public CommonResult getAdminInfo() {
 //        UmsAdmin umsAdmin = sysUserService.getCurrentAdmin();
 //        Map<String, Object> data = new HashMap<>();
