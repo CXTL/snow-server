@@ -1,10 +1,10 @@
 package com.snow.meta.controller;
 
-import api.CommonPage;
-import api.CommonResult;
+import com.snow.page.CommonPage;
+import com.snow.mybatis.CommonResult;
 import com.snow.meta.service.MetaDatasourceService;
-import dto.meta.DatasourceDto;
-import dto.meta.DatasourceParam;
+import com.snow.core.dto.meta.DatasourceDto;
+import com.snow.core.dto.meta.DatasourceParam;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;

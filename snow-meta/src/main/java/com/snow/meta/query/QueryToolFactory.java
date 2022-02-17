@@ -1,8 +1,8 @@
 package com.snow.meta.query;
 
-import constant.JdbcConstant;
-import dto.meta.DatasourceDto;
-import exception.Asserts;
+import com.snow.core.constant.JdbcConstant;
+import com.snow.core.dto.meta.DatasourceDto;
+import com.snow.core.exception.Asserts;
 import lombok.extern.slf4j.Slf4j;
 
 import java.sql.SQLException;

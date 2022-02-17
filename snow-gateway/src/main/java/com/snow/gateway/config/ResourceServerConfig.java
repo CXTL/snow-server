@@ -5,7 +5,7 @@ import com.snow.gateway.authorization.AuthorizationManager;
 import com.snow.gateway.component.RestAuthenticationEntryPoint;
 import com.snow.gateway.component.RestfulAccessDeniedHandler;
 import com.snow.gateway.filter.IgnoreUrlsRemoveJwtFilter;
-import constant.AuthConstant;
+import com.snow.core.constant.AuthConstant;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

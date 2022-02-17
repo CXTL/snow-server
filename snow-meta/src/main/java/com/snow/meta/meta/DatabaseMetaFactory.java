@@ -1,7 +1,7 @@
 package com.snow.meta.meta;
 
 
-import constant.JdbcConstant;
+import com.snow.core.constant.JdbcConstant;
 
 /**
  * meta信息工厂

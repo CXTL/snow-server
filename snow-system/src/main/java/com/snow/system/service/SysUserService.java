@@ -1,7 +1,7 @@
 package com.snow.system.service;
 
-import api.CommonResult;
-import domain.UserDto;
+import com.snow.mybatis.CommonResult;
+import com.snow.core.domain.UserDto;
 
 public interface SysUserService {
 

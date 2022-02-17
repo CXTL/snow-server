@@ -3,7 +3,7 @@ package com.snow.meta.query;
 import com.google.common.collect.Lists;
 import com.snow.meta.util.JdbcUtils;
 import com.snow.meta.util.LocalCacheUtil;
-import dto.meta.DatasourceDto;
+import com.snow.core.dto.meta.DatasourceDto;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -51,7 +51,7 @@ public class Hbase20XsqlQueryTool extends BaseQueryTool implements QueryToolInte
 
         } catch (SQLException e) {
             logger.error("[getTableNames Exception] --> "
-                    + "the exception message is:" + e.getMessage());
+                    + "the com.snow.core.exception message is:" + e.getMessage());
         } finally {
             JdbcUtils.close(rs);
         }
@@ -75,7 +75,7 @@ public class Hbase20XsqlQueryTool extends BaseQueryTool implements QueryToolInte
 
         } catch (SQLException e) {
             logger.error("[getColumnNames Exception] --> "
-                    + "the exception message is:" + e.getMessage());
+                    + "the com.snow.core.exception message is:" + e.getMessage());
         } finally {
             JdbcUtils.close(rs);
         }

@@ -1,6 +1,6 @@
 package com.snow.auth.exception;
 
-import api.CommonResult;
+import com.snow.mybatis.CommonResult;
 import org.springframework.security.oauth2.common.exceptions.OAuth2Exception;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

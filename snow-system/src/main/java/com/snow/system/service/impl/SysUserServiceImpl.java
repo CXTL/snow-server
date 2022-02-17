@@ -1,6 +1,6 @@
 package com.snow.system.service.impl;
 
-import api.CommonResult;
+import com.snow.mybatis.CommonResult;
 import cn.hutool.core.util.StrUtil;
 import com.alibaba.nacos.common.utils.CollectionUtils;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
@@ -10,9 +10,9 @@ import com.snow.system.mapper.SysRoleMapper;
 import com.snow.system.mapper.SysUserMapper;
 import com.snow.system.service.AuthService;
 import com.snow.system.service.SysUserService;
-import constant.AuthConstant;
-import domain.UserDto;
-import exception.Asserts;
+import com.snow.core.constant.AuthConstant;
+import com.snow.core.domain.UserDto;
+import com.snow.core.exception.Asserts;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

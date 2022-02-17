@@ -9,12 +9,12 @@ import com.snow.meta.util.AESUtil;
 import com.snow.meta.util.JdbcUtils;
 import com.snow.meta.util.LocalCacheUtil;
 import com.zaxxer.hikari.HikariDataSource;
-import constant.Constants;
-import constant.JdbcConstant;
-import dto.meta.ColumnInfo;
-import dto.meta.DasColumn;
-import dto.meta.DatasourceDto;
-import dto.meta.TableInfo;
+import com.snow.core.constant.Constants;
+import com.snow.core.constant.JdbcConstant;
+import com.snow.core.dto.meta.ColumnInfo;
+import com.snow.core.dto.meta.DasColumn;
+import com.snow.core.dto.meta.DatasourceDto;
+import com.snow.core.dto.meta.TableInfo;
 import net.sourceforge.jtds.jdbcx.JtdsDataSource;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -134,10 +134,10 @@ public abstract class BaseQueryTool implements QueryToolInterface {
                 res = connection.getSchema();
             } catch (SQLException e1) {
                 logger.error("[SQLException getSchema Exception] --> "
-                        + "the exception message is:" + e1.getMessage());
+                        + "the com.snow.core.exception message is:" + e1.getMessage());
             }
             logger.error("[getSchema Exception] --> "
-                    + "the exception message is:" + e.getMessage());
+                    + "the com.snow.core.exception message is:" + e.getMessage());
         }
         // 如果res是null，则将用户名当作 schema
         if (StrUtil.isBlank(res) && StringUtils.isNotBlank(jdbcUsername)) {
@@ -191,7 +191,7 @@ public abstract class BaseQueryTool implements QueryToolInterface {
             res = JdbcUtils.executeQuery(connection, sqlQueryTableNameComment, ImmutableList.of(currentSchema, tableName));
         } catch (SQLException e) {
             logger.error("[getTableInfo Exception] --> "
-                    + "the exception message is:" + e.getMessage());
+                    + "the com.snow.core.exception message is:" + e.getMessage());
         }
         return res;
     }
@@ -205,7 +205,7 @@ public abstract class BaseQueryTool implements QueryToolInterface {
             res = JdbcUtils.executeQuery(connection, sqlQueryTables, ImmutableList.of(currentSchema));
         } catch (SQLException e) {
             logger.error("[getTables Exception] --> "
-                    + "the exception message is:" + e.getMessage());
+                    + "the com.snow.core.exception message is:" + e.getMessage());
         }
         return res;
     }
@@ -233,7 +233,7 @@ public abstract class BaseQueryTool implements QueryToolInterface {
 
         } catch (SQLException e) {
             logger.error("[getColumns Exception] --> "
-                    + "the exception message is:" + e.getMessage());
+                    + "the com.snow.core.exception message is:" + e.getMessage());
         }
         return fullColumn;
     }
@@ -297,7 +297,7 @@ public abstract class BaseQueryTool implements QueryToolInterface {
                         JdbcUtils.close(resultSetComment);
                     } catch (SQLException e1) {
                         logger.error("[buildDasColumn executeQuery Exception] --> "
-                                + "the exception message is:" + e1.getMessage());
+                                + "the com.snow.core.exception message is:" + e1.getMessage());
                     }
                 });
             }
@@ -305,7 +305,7 @@ public abstract class BaseQueryTool implements QueryToolInterface {
             JdbcUtils.close(statement);
         } catch (SQLException e) {
             logger.error("[buildDasColumn Exception] --> "
-                    + "the exception message is:" + e.getMessage());
+                    + "the com.snow.core.exception message is:" + e.getMessage());
         }
         return res;
     }
@@ -320,7 +320,7 @@ public abstract class BaseQueryTool implements QueryToolInterface {
             pkColumns.forEach(e -> res.add((String) new ArrayList<>(e.values()).get(0)));
         } catch (SQLException e) {
             logger.error("[getPrimaryKeys Exception] --> "
-                    + "the exception message is:" + e.getMessage());
+                    + "the com.snow.core.exception message is:" + e.getMessage());
         }
         return res;
     }
@@ -357,7 +357,7 @@ public abstract class BaseQueryTool implements QueryToolInterface {
             }
         } catch (SQLException e) {
             logger.error("[getColumnNames Exception] --> "
-                    + "the exception message is:" + e.getMessage());
+                    + "the com.snow.core.exception message is:" + e.getMessage());
         } finally {
             JdbcUtils.close(rs);
             JdbcUtils.close(stmt);
@@ -382,7 +382,7 @@ public abstract class BaseQueryTool implements QueryToolInterface {
             tables.sort(Comparator.naturalOrder());
         } catch (SQLException e) {
             logger.error("[getTableNames Exception] --> "
-                    + "the exception message is:" + e.getMessage());
+                    + "the com.snow.core.exception message is:" + e.getMessage());
         } finally {
             JdbcUtils.close(rs);
             JdbcUtils.close(stmt);
@@ -406,7 +406,7 @@ public abstract class BaseQueryTool implements QueryToolInterface {
             }
         } catch (SQLException e) {
             logger.error("[getTableNames Exception] --> "
-                    + "the exception message is:" + e.getMessage());
+                    + "the com.snow.core.exception message is:" + e.getMessage());
         } finally {
             JdbcUtils.close(rs);
             JdbcUtils.close(stmt);
@@ -422,7 +422,7 @@ public abstract class BaseQueryTool implements QueryToolInterface {
             }
         } catch (SQLException e) {
             logger.error("[dataSourceTest Exception] --> "
-                    + "the exception message is:" + e.getMessage());
+                    + "the com.snow.core.exception message is:" + e.getMessage());
         }
         return false;
     }
@@ -492,7 +492,7 @@ public abstract class BaseQueryTool implements QueryToolInterface {
             maxVal = rs.getLong(1);
         } catch (SQLException e) {
             logger.error("[getMaxIdVal Exception] --> "
-                    + "the exception message is:" + e.getMessage());
+                    + "the com.snow.core.exception message is:" + e.getMessage());
         } finally {
             JdbcUtils.close(rs);
             JdbcUtils.close(stmt);
@@ -516,7 +516,7 @@ public abstract class BaseQueryTool implements QueryToolInterface {
             stmt.executeUpdate(querySql);
         } catch (SQLException e) {
             logger.error("[executeCreateTableSql Exception] --> "
-                    + "the exception message is:" + e.getMessage());
+                    + "the com.snow.core.exception message is:" + e.getMessage());
         } finally {
             JdbcUtils.close(stmt);
         }
@@ -537,7 +537,7 @@ public abstract class BaseQueryTool implements QueryToolInterface {
             }
         } catch (SQLException e) {
             logger.error("[getTableNames Exception] --> "
-                    + "the exception message is:" + e.getMessage());
+                    + "the com.snow.core.exception message is:" + e.getMessage());
         } finally {
             JdbcUtils.close(rs);
             JdbcUtils.close(stmt);

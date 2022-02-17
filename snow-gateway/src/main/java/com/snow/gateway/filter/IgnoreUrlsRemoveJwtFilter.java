@@ -1,7 +1,7 @@
 package com.snow.gateway.filter;
 
 import com.snow.gateway.config.IgnoreUrlsConfig;
-import constant.AuthConstant;
+import com.snow.core.constant.AuthConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.stereotype.Component;

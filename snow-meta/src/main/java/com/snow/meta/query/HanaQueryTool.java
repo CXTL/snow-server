@@ -1,6 +1,6 @@
 package com.snow.meta.query;
 
-import dto.meta.DatasourceDto;
+import com.snow.core.dto.meta.DatasourceDto;
 
 import java.sql.SQLException;
 

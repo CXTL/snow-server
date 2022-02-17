@@ -2,7 +2,7 @@ package com.snow.meta.util;
 
 
 import com.alibaba.druid.util.HexBin;
-import constant.JdbcConstant;
+import com.snow.core.constant.JdbcConstant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

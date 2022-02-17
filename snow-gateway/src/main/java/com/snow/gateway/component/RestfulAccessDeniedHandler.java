@@ -1,6 +1,6 @@
 package com.snow.gateway.component;
 
-import api.CommonResult;
+import com.snow.mybatis.CommonResult;
 import cn.hutool.json.JSONUtil;
 import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.http.HttpHeaders;

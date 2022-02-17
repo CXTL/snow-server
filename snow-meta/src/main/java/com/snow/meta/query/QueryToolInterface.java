@@ -1,7 +1,7 @@
 package com.snow.meta.query;
 
-import dto.meta.ColumnInfo;
-import dto.meta.TableInfo;
+import com.snow.core.dto.meta.ColumnInfo;
+import com.snow.core.dto.meta.TableInfo;
 
 import java.sql.SQLException;
 import java.util.List;

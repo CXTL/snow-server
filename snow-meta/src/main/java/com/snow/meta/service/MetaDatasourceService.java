@@ -1,7 +1,7 @@
 package com.snow.meta.service;
 
-import dto.meta.DatasourceDto;
-import dto.meta.DatasourceParam;
+import com.snow.core.dto.meta.DatasourceDto;
+import com.snow.core.dto.meta.DatasourceParam;
 
 import java.util.List;
 

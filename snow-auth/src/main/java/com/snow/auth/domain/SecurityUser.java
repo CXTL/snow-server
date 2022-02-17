@@ -1,6 +1,6 @@
 package com.snow.auth.domain;
 
-import domain.UserDto;
+import com.snow.core.domain.UserDto;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

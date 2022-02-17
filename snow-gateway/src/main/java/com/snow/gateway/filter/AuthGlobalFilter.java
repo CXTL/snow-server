@@ -2,7 +2,7 @@ package com.snow.gateway.filter;
 
 import cn.hutool.core.util.StrUtil;
 import com.nimbusds.jose.JWSObject;
-import constant.AuthConstant;
+import com.snow.core.constant.AuthConstant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;

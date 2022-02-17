@@ -3,7 +3,7 @@ package com.snow.meta.query;
 
 import cn.hutool.db.meta.Table;
 import com.snow.meta.util.LocalCacheUtil;
-import dto.meta.DatasourceDto;
+import com.snow.core.dto.meta.DatasourceDto;
 
 import java.sql.Connection;
 import java.util.concurrent.ExecutorService;

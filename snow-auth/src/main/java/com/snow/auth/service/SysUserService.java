@@ -1,8 +1,8 @@
 package com.snow.auth.service;
 
-import api.CommonResult;
-import constant.ServiceInfoConstant;
-import domain.UserDto;
+import com.snow.mybatis.CommonResult;
+import com.snow.core.constant.ServiceInfoConstant;
+import com.snow.core.domain.UserDto;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;

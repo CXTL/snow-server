@@ -38,7 +38,7 @@
         <starter-bootstrap.version>3.0.3</starter-bootstrap.version>
         <hutool.version>5.4.0</hutool.version>
         <cloud-security.version>2.3.3.RELEASE</cloud-security.version>
-        <servlet-api.version>9.0.38</servlet-api.version>
+        <servlet-com.snow.core.api.version>9.0.38</servlet-com.snow.core.api.version>
         <commons-collections4.version>4.4</commons-collections4.version>
         <commons-lang.version>2.6</commons-lang.version>
         <activiti.version>7.1.0.M6</activiti.version>

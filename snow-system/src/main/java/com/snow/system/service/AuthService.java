@@ -1,7 +1,7 @@
 package com.snow.system.service;
 
-import api.CommonResult;
-import constant.ServiceInfoConstant;
+import com.snow.mybatis.CommonResult;
+import com.snow.core.constant.ServiceInfoConstant;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;

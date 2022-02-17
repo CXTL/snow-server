@@ -1,8 +1,8 @@
 package com.snow.auth.controller;
 
-import api.CommonResult;
+import com.snow.mybatis.CommonResult;
 import com.snow.auth.domain.Oauth2TokenDto;
-import constant.AuthConstant;
+import com.snow.core.constant.AuthConstant;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;

@@ -1,19 +1,14 @@
 package com.snow.system.controller;
 
-import api.CommonResult;
+import com.snow.mybatis.CommonResult;
 import com.snow.system.dto.UmsAdminLoginParam;
 import com.snow.system.service.SysUserService;
-import domain.UserDto;
+import com.snow.core.domain.UserDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 @Api(tags = "用户信息API")
 @RestController

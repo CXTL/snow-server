@@ -9,7 +9,7 @@ import com.snow.system.mapper.SysPermissionMapper;
 import com.snow.system.mapper.SysRoleMapper;
 import com.snow.system.mapper.SysRolePermissionMapper;
 import com.snow.system.service.SysPermissionService;
-import constant.AuthConstant;
+import com.snow.core.constant.AuthConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

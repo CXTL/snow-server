@@ -1,4 +1,4 @@
-package com.snow.auth.domain;//package com.snow.auth.domain;
+package com.snow.auth.domain;//package com.snow.auth.com.snow.core.domain;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Builder;

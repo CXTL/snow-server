@@ -5,8 +5,8 @@ import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONUtil;
 import com.nimbusds.jose.JWSObject;
 import com.snow.gateway.config.IgnoreUrlsConfig;
-import constant.AuthConstant;
-import domain.UserDto;
+import com.snow.core.constant.AuthConstant;
+import com.snow.core.domain.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.HttpMethod;
@@ -66,9 +66,9 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
             JWSObject jwsObject = JWSObject.parse(realToken);
             String userStr = jwsObject.getPayload().toString();
             UserDto userDto = JSONUtil.toBean(userStr, UserDto.class);
-            if (AuthConstant.ADMIN_CLIENT_ID.equals(userDto.getClientId()) && !pathMatcher.match(AuthConstant.ADMIN_URL_PATTERN, uri.getPath())) {
-                return Mono.just(new AuthorizationDecision(false));
-            }
+//            if (AuthConstant.ADMIN_CLIENT_ID.equals(userDto.getClientId()) && !pathMatcher.match(AuthConstant.ADMIN_URL_PATTERN, uri.getPath())) {
+//                return Mono.just(new AuthorizationDecision(false));
+//            }
             if (AuthConstant.PORTAL_CLIENT_ID.equals(userDto.getClientId()) && pathMatcher.match(AuthConstant.ADMIN_URL_PATTERN, uri.getPath())) {
                 return Mono.just(new AuthorizationDecision(false));
             }
@@ -85,7 +85,7 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
          * 鉴权开始
          *
          * 缓存取 [URL权限-角色集合] 规则数据
-         * urlPermRolesRules = [{'key':'GET:/api/v1/users/*','value':['ADMIN','TEST']},...]
+         * urlPermRolesRules = [{'key':'GET:/com.snow.core.api/v1/users/*','value':['ADMIN','TEST']},...]
          */
 
         //管理端路径需校验权限

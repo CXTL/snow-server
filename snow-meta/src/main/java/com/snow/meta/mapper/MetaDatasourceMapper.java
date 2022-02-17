@@ -2,7 +2,7 @@ package com.snow.meta.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.snow.meta.entity.MetaDatasourceInfo;
-import dto.meta.DatasourceDto;
+import com.snow.core.dto.meta.DatasourceDto;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
