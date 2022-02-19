@@ -3,6 +3,8 @@ services:
   snow-gateway:
     image: snow/snow-gateway:0.0.1-SNAPSHOT
     container_name: snow-gateway
+    env_file:
+      - ./snow.env
     ports:
       - 18080:18080
     volumes:
@@ -12,6 +14,8 @@ services:
   snow-auth:
     image: snow/snow-auth:0.0.1-SNAPSHOT
     container_name: snow-auth
+    env_file:
+      - ./snow.env
     ports:
       - 18085:18085
     volumes:
@@ -21,6 +25,8 @@ services:
   snow-system:
     image: snow/snow-system:0.0.1-SNAPSHOT
     container_name: snow-system
+    env_file:
+      - ./snow.env
     ports:
       - 18082:18082
     volumes:
@@ -30,6 +36,8 @@ services:
   snow-meta:
     image: snow/snow-meta:0.0.1-SNAPSHOT
     container_name: snow-meta
+    env_file:
+      - ./snow.env
     ports:
       - 18083:18083
     volumes:
@@ -39,8 +47,10 @@ services:
   snow-job:
     image: snow/snow-job:0.0.1-SNAPSHOT
     container_name: snow-job
+    env_file:
+      - ./snow.env
     ports:
-      - 18083:18083
+      - 18084:18084
     volumes:
       - /etc/localtime:/etc/localtime
     environment:
