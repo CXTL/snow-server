@@ -242,7 +242,7 @@
                     <configuration>
                         <imageName>snow/${project.artifactId}:${project.version}</imageName>
                         <dockerHost>${docker.host}</dockerHost>
-                        <baseImage>adoptopenjdk/openjdk11:alpine</baseImage>
+                        <baseImage>java:11</baseImage>
                         <entryPoint>["java", "-jar", "-Dspring.profiles.active=dev","/${project.build.finalName}.jar"]</entryPoint>
                         <resources>
                             <resource>
