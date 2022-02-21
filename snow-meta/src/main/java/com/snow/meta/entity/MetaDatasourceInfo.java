@@ -79,5 +79,10 @@ public class MetaDatasourceInfo {
      */
     private String description;
 
+    /**
+     * 同步状态，1 未同步 2 同步中 3 同步成功 4 同步失败
+     */
+    private Integer syncStatus;
+
 
 }

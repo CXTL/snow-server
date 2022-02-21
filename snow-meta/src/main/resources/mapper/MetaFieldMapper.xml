@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.snow.meta.mapper.MetaFieldMapper">
+
+    <sql id="base_sql">
+        table_id,field_name,field_name_chinese,type,
+        deleted,create_time,update_time,description,
+        primary_key_flag,null_flag
+    </sql>
+
+    <insert id="batchInsert" useGeneratedKeys="true" keyProperty="id">
+        insert into meta_field_info (
+            `table_id`, `field_name`, `field_name_chinese`, `type`, `primary_key_flag`,
+            `null_flag`, `deleted`, `create_time`, `update_time`, `description` )
+        values
+        <foreach collection="list" item="item" separator=",">
+            (
+             #{item.tableId},
+             #{item.fieldName},
+             #{item.fieldNameChinese},
+             #{item.type},
+             #{item.primaryKeyFlag},
+             #{item.nullFlag},
+             #{item.deleted},
+             #{item.createTime},
+             #{item.updateTime},
+             #{item.description}
+             )
+        </foreach>
+    </insert>
+
+    <delete id="deleteByTableIds">
+        delete from meta_field_info where table_id in
+        <foreach collection="list" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+
+
+</mapper>

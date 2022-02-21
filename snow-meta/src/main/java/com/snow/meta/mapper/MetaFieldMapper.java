@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.snow.meta.entity.MetaDatasourceInfo;
 import com.snow.meta.entity.MetaFieldInfo;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -11,4 +12,6 @@ import java.util.List;
 public interface MetaFieldMapper extends BaseMapper<MetaFieldInfo> {
 
     void batchInsert(List<MetaFieldInfo> metaFieldInfos);
+
+    void deleteByTableIds(List<Long> tableIds);
 }

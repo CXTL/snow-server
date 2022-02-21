@@ -26,6 +26,7 @@ CREATE TABLE `meta_datasource_info`  (
   `status` tinyint(1) NULL DEFAULT 1 COMMENT '数据源状态：1-正常 0-禁用',
   `type` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '数据源类型 mysql oracle pgsql hive hbase',
   `deleted` tinyint(1) NULL DEFAULT 0 COMMENT '逻辑删除标识：0-未删除；1-已删除',
+  `sync_status` tinyint(1) NULL DEFAULT 1 COMMENT '同步状态，1 未同步 2 同步中 3 同步成功 4 同步失败',
   `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `description` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
