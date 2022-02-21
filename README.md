@@ -23,3 +23,5 @@ SpringCloudAlibaba + SpringCloud + Nacos + SpringSecurity + Sentinel + Oauth2.0 
 http://localhost:18080/system/user/login
 {"username":"admin","password":"123456"}
 
+部署
+> mvn clean package docker:build -DskipTests

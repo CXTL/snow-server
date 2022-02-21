@@ -53,6 +53,9 @@
         <ojdbc6.version>11.2.0.4</ojdbc6.version>
         <ngdbc.version>2.3.48</ngdbc.version>
         <knife4j.version>3.0.3</knife4j.version>
+
+        <docker.host>http://192.168.40.221:2375</docker.host>
+        <docker.maven.plugin.version>1.2.2</docker.maven.plugin.version>
     </properties>
 
 
@@ -214,5 +217,44 @@
 
         </dependencies>
     </dependencyManagement>
+
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                </plugin>
+                <plugin>
+                    <groupId>com.spotify</groupId>
+                    <artifactId>docker-maven-plugin</artifactId>
+                    <version>${docker.maven.plugin.version}</version>
+                    <!--<executions>-->
+                    <!--<execution>-->
+                    <!--<id>build-image</id>-->
+                    <!--<phase>package</phase>-->
+                    <!--<goals>-->
+                    <!--<goal>build</goal>-->
+                    <!--</goals>-->
+                    <!--</execution>-->
+                    <!--</executions>-->
+                    <configuration>
+                        <imageName>snow/${project.artifactId}:${project.version}</imageName>
+                        <dockerHost>${docker.host}</dockerHost>
+                        <baseImage>java:8</baseImage>
+                        <entryPoint>["java", "-jar","/${project.build.finalName}.jar"]</entryPoint>
+                        <resources>
+                            <resource>
+                                <targetPath>/</targetPath>
+                                <directory>${project.build.directory}</directory>
+                                <include>${project.build.finalName}.jar</include>
+                            </resource>
+                        </resources>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 
 </project>
