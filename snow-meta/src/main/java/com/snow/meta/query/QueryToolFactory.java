@@ -15,32 +15,32 @@ import java.sql.SQLException;
 @Slf4j
 public class QueryToolFactory {
 
-    public static BaseQueryTool getByDbType(DatasourceDto jobDatasource) {
+    public static BaseQueryTool getByDbType(DatasourceDto datasourceDto) {
         //获取dbType
-        String datasource = jobDatasource.getType();
+        String datasource = datasourceDto.getType();
         if (JdbcConstant.MYSQL.equals(datasource)) {
-            return getMySQLQueryToolInstance(jobDatasource);
+            return getMySQLQueryToolInstance(datasourceDto);
         } else if (JdbcConstant.ORACLE.equals(datasource)) {
-            return getOracleQueryToolInstance(jobDatasource);
+            return getOracleQueryToolInstance(datasourceDto);
         } else if (JdbcConstant.POSTGRESQL.equals(datasource)) {
-            return getPostgresqlQueryToolInstance(jobDatasource);
+            return getPostgresqlQueryToolInstance(datasourceDto);
         } else if (JdbcConstant.SQL_SERVER.equals(datasource)) {
-            return getSqlserverQueryToolInstance(jobDatasource);
+            return getSqlserverQueryToolInstance(datasourceDto);
         } else if (JdbcConstant.HIVE.equals(datasource)) {
-            return getHiveQueryToolInstance(jobDatasource);
+            return getHiveQueryToolInstance(datasourceDto);
         } else if (JdbcConstant.CLICKHOUSE.equals(datasource)) {
-            return getClickHouseQueryToolInstance(jobDatasource);
+            return getClickHouseQueryToolInstance(datasourceDto);
         } else if (JdbcConstant.HBASE20XSQL.equals(datasource)) {
-            return getHbase20XsqlQueryToolQueryToolInstance(jobDatasource);
+            return getHbase20XsqlQueryToolQueryToolInstance(datasourceDto);
         } else if (JdbcConstant.HANA.equals(datasource)) {
-            return getHanaQueryToolInstance(jobDatasource);
+            return getHanaQueryToolInstance(datasourceDto);
         }
         throw new UnsupportedOperationException("找不到该类型: ".concat(datasource));
     }
 
-    private static BaseQueryTool getMySQLQueryToolInstance(DatasourceDto jdbcDatasource) {
+    private static BaseQueryTool getMySQLQueryToolInstance(DatasourceDto datasourceDto) {
         try {
-            return new MySQLQueryTool(jdbcDatasource);
+            return new MySQLQueryTool(datasourceDto);
         } catch (Exception e) {
             log.error("getMySQLQueryToolInstance error :" , e);
             Asserts.fail("数据库操作异常");
@@ -48,9 +48,9 @@ public class QueryToolFactory {
         return null;
     }
 
-    private static BaseQueryTool getOracleQueryToolInstance(DatasourceDto jdbcDatasource) {
+    private static BaseQueryTool getOracleQueryToolInstance(DatasourceDto datasourceDto) {
         try {
-            return new OracleQueryTool(jdbcDatasource);
+            return new OracleQueryTool(datasourceDto);
         } catch (SQLException e) {
             log.error("getOracleQueryToolInstance error :" , e);
             Asserts.fail("数据库操作异常");
@@ -58,9 +58,9 @@ public class QueryToolFactory {
         return null;
     }
 
-    private static BaseQueryTool getPostgresqlQueryToolInstance(DatasourceDto jdbcDatasource) {
+    private static BaseQueryTool getPostgresqlQueryToolInstance(DatasourceDto datasourceDto) {
         try {
-            return new PostgresqlQueryTool(jdbcDatasource);
+            return new PostgresqlQueryTool(datasourceDto);
         } catch (SQLException e) {
             log.error("getPostgresqlQueryToolInstance error :" , e);
             Asserts.fail("数据库操作异常");
@@ -68,9 +68,9 @@ public class QueryToolFactory {
         return null;
     }
 
-    private static BaseQueryTool getSqlserverQueryToolInstance(DatasourceDto jdbcDatasource) {
+    private static BaseQueryTool getSqlserverQueryToolInstance(DatasourceDto datasourceDto) {
         try {
-            return new SqlServerQueryTool(jdbcDatasource);
+            return new SqlServerQueryTool(datasourceDto);
         } catch (SQLException e) {
             log.error("getSqlserverQueryToolInstance error :" , e);
             Asserts.fail("数据库操作异常");
@@ -78,36 +78,36 @@ public class QueryToolFactory {
         return null;
     }
 
-    private static BaseQueryTool getHiveQueryToolInstance(DatasourceDto jdbcDatasource) {
+    private static BaseQueryTool getHiveQueryToolInstance(DatasourceDto datasourceDto) {
         try {
-            return new HiveQueryTool(jdbcDatasource);
+            return new HiveQueryTool(datasourceDto);
         } catch (SQLException e) {
             log.error("getHiveQueryToolInstance error :" , e);
             Asserts.fail("数据库操作异常");
         }
         return null;
     }
-    private static BaseQueryTool getClickHouseQueryToolInstance(DatasourceDto jdbcDatasource) {
+    private static BaseQueryTool getClickHouseQueryToolInstance(DatasourceDto datasourceDto) {
         try {
-            return new ClickHouseQueryTool(jdbcDatasource);
+            return new ClickHouseQueryTool(datasourceDto);
         } catch (SQLException e) {
             log.error("getClickHouseQueryToolInstance error :" , e);
             Asserts.fail("数据库操作异常");
         }
         return null;
     }
-    private static BaseQueryTool getHanaQueryToolInstance(DatasourceDto jdbcDatasource) {
+    private static BaseQueryTool getHanaQueryToolInstance(DatasourceDto datasourceDto) {
         try {
-            return new HanaQueryTool(jdbcDatasource);
+            return new HanaQueryTool(datasourceDto);
         } catch (SQLException e) {
             log.error("getHanaQueryToolInstance error :" , e);
             Asserts.fail("数据库操作异常");
         }
         return null;
     }
-    private static Hbase20XsqlQueryTool getHbase20XsqlQueryToolQueryToolInstance(DatasourceDto jdbcDatasource) {
+    private static Hbase20XsqlQueryTool getHbase20XsqlQueryToolQueryToolInstance(DatasourceDto datasourceDto) {
         try {
-            return new Hbase20XsqlQueryTool(jdbcDatasource);
+            return new Hbase20XsqlQueryTool(datasourceDto);
         } catch (SQLException e) {
             log.error("getHbase20XsqlQueryToolQueryToolInstance error :" , e);
             Asserts.fail("数据库操作异常");

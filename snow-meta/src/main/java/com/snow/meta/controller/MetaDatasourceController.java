@@ -59,5 +59,17 @@ public class MetaDatasourceController {
         return CommonResult.success(CommonPage.restPage(DatasourceList));
     }
 
+    @ApiOperation("测试连接")
+    @PostMapping(value = "connect")
+    public CommonResult<Boolean> connect(@RequestParam(value = "datasourceId") Long datasourceId) {
+        return CommonResult.success(metaDatasourceService.connect(datasourceId));
+    }
+
+    @ApiOperation("数据同步")
+    @PostMapping(value = "sync")
+    public CommonResult sync(@RequestParam(value = "datasourceId") Long datasourceId) {
+        metaDatasourceService.sync(datasourceId);
+        return CommonResult.success();
+    }
 
 }

@@ -32,7 +32,7 @@ public interface QueryToolInterface {
      *
      * @return
      */
-    List<Map<String, Object>> getTables();
+    List<TableInfo> getTables();
 
     /**
      * 根据表名获取所有字段

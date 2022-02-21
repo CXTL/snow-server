@@ -60,8 +60,6 @@ CREATE TABLE `meta_field_info`  (
   `field_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '字段名称',
   `field_name_chinese` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '字段中文名称',
   `type` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '字段类型',
-  `field_length` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '字段长度',
-  `field_decimal` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '小数点位数',
   `primary_key_flag` tinyint(1) NULL DEFAULT 0 COMMENT '主键标识：0-不是主键；1-是主键',
   `null_flag` tinyint(1) NULL DEFAULT 0 COMMENT '是否为null标识：0-不可为空；1-可为空',
   `deleted` tinyint(1) NULL DEFAULT 0 COMMENT '逻辑删除标识：0-未删除；1-已删除',

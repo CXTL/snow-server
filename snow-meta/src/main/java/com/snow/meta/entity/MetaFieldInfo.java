@@ -34,14 +34,6 @@ public class MetaFieldInfo {
      */
     private String type;
     /**
-     *字段长度
-     */
-    private String fieldLength;
-    /**
-     *小数点位数
-     */
-    private String fieldDecimal;
-    /**
      *逻辑删除标识：0-未删除；1-已删除
      */
     private Integer deleted;

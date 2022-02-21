@@ -18,4 +18,8 @@ public interface MetaDatasourceService {
     List<DatasourceDto> listDatasource();
 
     List<DatasourceDto> pageListDatasource(Integer pageSize, Integer pageNum);
+
+    Boolean connect(Long datasourceId);
+
+    void sync(Long datasourceId);
 }

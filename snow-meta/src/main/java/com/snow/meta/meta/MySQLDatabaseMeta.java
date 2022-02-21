@@ -31,7 +31,7 @@ public class MySQLDatabaseMeta extends BaseDatabaseMeta implements DatabaseInter
 
     @Override
     public String getSQLQueryTables() {
-        return "show tables";
+        return "SELECT t.table_name, t.table_schema, t.table_comment, t.create_time,t.table_type FROM information_schema.TABLES t WHERE TABLE_SCHEMA = ?";
     }
 
     @Override

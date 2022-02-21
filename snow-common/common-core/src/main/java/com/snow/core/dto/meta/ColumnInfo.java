@@ -12,11 +12,11 @@ public class ColumnInfo {
     /**
      * 字段名称
      */
-    private String name;
+    private String fieldName;
     /**
      * 注释
      */
-    private String comment;
+    private String description;
     /**
      * 字段类型
      */

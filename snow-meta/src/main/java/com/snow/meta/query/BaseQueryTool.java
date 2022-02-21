@@ -3,6 +3,7 @@ package com.snow.meta.query;
 import cn.hutool.core.util.StrUtil;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
+import com.snow.core.enums.TableTypeEnum;
 import com.snow.meta.meta.DatabaseInterface;
 import com.snow.meta.meta.DatabaseMetaFactory;
 import com.snow.meta.util.AESUtil;
@@ -23,14 +24,11 @@ import org.slf4j.LoggerFactory;
 import javax.sql.DataSource;
 import java.net.URI;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * 抽象查询工具
- *
  */
 public abstract class BaseQueryTool implements QueryToolInterface {
 
@@ -55,7 +53,7 @@ public abstract class BaseQueryTool implements QueryToolInterface {
      * @param jobDatasource
      */
     BaseQueryTool(DatasourceDto jobDatasource) throws SQLException {
-        System.out.println("#####################"+jobDatasource.getDatasourceName());
+        System.out.println("#####################" + jobDatasource.getDatasourceName());
         if (LocalCacheUtil.get(jobDatasource.getDatasourceName()) == null) {
             getDataSource(jobDatasource);
         } else {
@@ -81,7 +79,13 @@ public abstract class BaseQueryTool implements QueryToolInterface {
 
     private void getDataSource(DatasourceDto jobDatasource) throws SQLException {
         String userName = AESUtil.decrypt(jobDatasource.getUsername());
+        if (Objects.isNull(userName)) {
+            userName = jobDatasource.getUsername();
+        }
         String password = AESUtil.decrypt(jobDatasource.getPassword());
+        if (Objects.isNull(password)) {
+            password = jobDatasource.getPassword();
+        }
         String jdbcUrl = jobDatasource.getUrl();
         String DBtype = jobDatasource.getDatasourceName();
         if (jdbcUrl != null && jdbcUrl.startsWith("jdbc:jtds")) {
@@ -111,13 +115,13 @@ public abstract class BaseQueryTool implements QueryToolInterface {
             dataSource.setDriverClassName(jobDatasource.getDriverClassName());
             dataSource.setMaximumPoolSize(1);
             dataSource.setMinimumIdle(0);
-            String testSQL ="SELECT 1";
-            if("hana".equals(DBtype)){
-                testSQL ="SELECT 1 from tables LIMIT 1";
-            }else if("oracle".equals(DBtype)){
-                testSQL ="select 1 from dual";
+            String testSQL = "SELECT 1";
+            if ("hana".equals(DBtype)) {
+                testSQL = "SELECT 1 from tables LIMIT 1";
+            } else if ("oracle".equals(DBtype)) {
+                testSQL = "select 1 from dual";
             }
-            dataSource.setConnectionTestQuery(testSQL );
+            dataSource.setConnectionTestQuery(testSQL);
             dataSource.setConnectionTimeout(30000);
             this.datasource = dataSource;
             this.connection = this.datasource.getConnection();
@@ -158,8 +162,8 @@ public abstract class BaseQueryTool implements QueryToolInterface {
         //表名，注释
         List tValues = new ArrayList(tableInfos.get(0).values());
 
-        tableInfo.setName(StrUtil.toString(tValues.get(0)));
-        tableInfo.setComment(StrUtil.toString(tValues.get(1)));
+        tableInfo.setTableName(StrUtil.toString(tValues.get(0)));
+        tableInfo.setDescription(StrUtil.toString(tValues.get(1)));
 
 
         //获取所有字段
@@ -172,7 +176,7 @@ public abstract class BaseQueryTool implements QueryToolInterface {
 
         //设置ifPrimaryKey标志
         fullColumn.forEach(e -> {
-            if (primaryKeys.contains(e.getName())) {
+            if (primaryKeys.contains(e.getFieldName())) {
                 e.setIfPrimaryKey(true);
             } else {
                 e.setIfPrimaryKey(false);
@@ -197,18 +201,37 @@ public abstract class BaseQueryTool implements QueryToolInterface {
     }
 
     @Override
-    public List<Map<String, Object>> getTables() {
+    public List<TableInfo> getTables() {
         String sqlQueryTables = sqlBuilder.getSQLQueryTables();
         logger.info(sqlQueryTables);
-        List<Map<String, Object>> res = null;
+        List<TableInfo> tableInfos = new ArrayList<>();
         try {
-            res = JdbcUtils.executeQuery(connection, sqlQueryTables, ImmutableList.of(currentSchema));
+            List<Map<String, Object>> res = JdbcUtils.executeQuery(connection, sqlQueryTables, ImmutableList.of(currentSchema));
+            tableInfos = buildTables(res);
         } catch (SQLException e) {
             logger.error("[getTables Exception] --> "
                     + "the com.snow.core.exception message is:" + e.getMessage());
         }
-        return res;
+        return tableInfos;
     }
+
+
+    private List<TableInfo> buildTables(List<Map<String, Object>> tableMap) {
+        return tableMap.stream().map(a -> {
+            TableInfo tableInfo = new TableInfo();
+            String tableName = (String) a.get("table_name");
+            String tableSchema = (String) a.get("table_schema");
+            String tableComment = (String) a.get("table_comment");
+            String tableType = (String) a.get("table_type");
+            tableInfo.setDatabaseName(currentSchema);
+            tableInfo.setTableName(tableName);
+            tableInfo.setDescription(tableComment);
+            tableInfo.setType(TableTypeEnum.transform(tableType).getCode());
+            tableInfo.setSchemaName(tableSchema);
+            return tableInfo;
+        }).collect(Collectors.toList());
+    }
+
 
     @Override
     public List<ColumnInfo> getColumns(String tableName) {
@@ -242,8 +265,8 @@ public abstract class BaseQueryTool implements QueryToolInterface {
         List<ColumnInfo> res = Lists.newArrayList();
         dasColumns.forEach(e -> {
             ColumnInfo columnInfo = new ColumnInfo();
-            columnInfo.setName(e.getColumnName());
-            columnInfo.setComment(e.getColumnComment());
+            columnInfo.setFieldName(e.getColumnName());
+            columnInfo.setDescription(e.getColumnComment());
             columnInfo.setType(e.getColumnTypeName());
             columnInfo.setIfPrimaryKey(e.isIsprimaryKey());
             columnInfo.setIsnull(e.getIsNull());
