@@ -63,15 +63,13 @@ public class MetaDatasourceServiceImpl implements MetaDatasourceService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public Integer update(DatasourceParam datasourceParam) {
-        MetaDatasourceInfo oldDatasourceInfo = getDatabaseSourceById(datasourceParam.getId());
+        getDatabaseSourceById(datasourceParam.getId());
         MetaDatasourceInfo metaDatasourceInfo = MetaDatasourceInfo.builder().build();
         BeanUtils.copyProperties(datasourceParam, metaDatasourceInfo);
         checkDatasourceNameUnique(metaDatasourceInfo);
-        if (oldDatasourceInfo.getType().compareTo(metaDatasourceInfo.getType()) != 0) {
-            JdbcTypeEnum jdbcTypeEnum = JdbcTypeEnum.transform(datasourceParam.getType());
-            if (Objects.nonNull(jdbcTypeEnum)) {
-                metaDatasourceInfo.setDriverClassName(jdbcTypeEnum.getDriver());
-            }
+        JdbcTypeEnum jdbcTypeEnum = JdbcTypeEnum.transform(datasourceParam.getType());
+        if (Objects.nonNull(jdbcTypeEnum)) {
+            metaDatasourceInfo.setDriverClassName(jdbcTypeEnum.getDriver());
         }
         metaDatasourceInfo.setUpdateTime(LocalDateTime.now());
         return metaDatasourceMapper.updateById(metaDatasourceInfo);
@@ -160,7 +158,7 @@ public class MetaDatasourceServiceImpl implements MetaDatasourceService {
         //修改状态为同步中
         MetaDatasourceInfo metaDatasourceInfo = getDatabaseSourceById(datasourceId);
         Integer syncStatus = metaDatasourceInfo.getSyncStatus();
-        if(SyncStatusEnum.SYNC_ING.getStatus().equals(syncStatus)){
+        if (SyncStatusEnum.SYNC_ING.getStatus().equals(syncStatus)) {
             Asserts.fail("正在同步中,请勿重复操作!");
         }
         metaDatasourceInfo.setSyncStatus(SyncStatusEnum.SYNC_ING.getStatus());
@@ -168,9 +166,6 @@ public class MetaDatasourceServiceImpl implements MetaDatasourceService {
         //异步同步数据
         asyncService.actualSync(metaDatasourceInfo);
     }
-
-
-
 
 
     /**

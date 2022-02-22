@@ -16,6 +16,7 @@ import com.snow.meta.mapper.MetaFieldMapper;
 import com.snow.meta.mapper.MetaTableMapper;
 import com.snow.meta.query.BaseQueryTool;
 import com.snow.meta.service.AsyncService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
@@ -29,6 +30,7 @@ import java.util.stream.Collectors;
 import static com.snow.meta.service.impl.MetaDatasourceServiceImpl.getQueryToolByDsInfo;
 
 @Service
+@Slf4j
 public class AsyncServiceImpl implements AsyncService {
 
     @Autowired
@@ -48,7 +50,6 @@ public class AsyncServiceImpl implements AsyncService {
      * @return
      */
     @Async(AsyncConfig.EXECUTOR_NAME)
-    @Transactional(rollbackFor = Exception.class)
     public void actualSync(MetaDatasourceInfo datasourceInfo) {
         List<MetaTableInfo> metaTableInfos = metaTableMapper.selectList(new LambdaQueryWrapper<MetaTableInfo>()
                 .eq(MetaTableInfo::getDatasourceId, datasourceInfo.getId()));
@@ -59,29 +60,42 @@ public class AsyncServiceImpl implements AsyncService {
                 metaFieldMapper.deleteByTableIds(tableIds);
             }
             BaseQueryTool queryTool = getQueryToolByDsInfo(datasourceInfo);
-            //查询表数据
-            List<TableInfo> tables = queryTool.getTables();
-            LocalDateTime now = LocalDateTime.now();
-            if (CollectionUtils.isNotEmpty(tables)) {
-                tables.stream().forEach(a -> {
-                    MetaTableInfo tableInfo = new MetaTableInfo();
-                    BeanUtils.copyProperties(a, tableInfo);
-                    tableInfo.setDatasourceId(datasourceInfo.getId());
-                    tableInfo.setDatabaseName(datasourceInfo.getDatabaseName());
-                    tableInfo.setCreateTime(now);
-                    tableInfo.setUpdateTime(now);
-                    tableInfo.setDeleted(YesNoEnum.NO.getValue());
-                    metaTableMapper.insert(tableInfo);
-                    //保存表字段信息
-                    saveFiledInfo(queryTool, tableInfo, now);
-                });
-            }
+            //实际同步方法
+            executeSync(datasourceInfo, queryTool);
             datasourceInfo.setSyncStatus(SyncStatusEnum.SYNC_SUCCESS.getStatus());
         } catch (Exception e) {
             datasourceInfo.setSyncStatus(SyncStatusEnum.SYNC_FALSE.getStatus());
+            log.error("同步失败：", e);
             Asserts.fail("同步失败");
         } finally {
             metaDatasourceMapper.updateById(datasourceInfo);
+        }
+    }
+
+    /**
+     * 执行同步
+     *
+     * @param datasourceInfo
+     * @param queryTool
+     */
+    @Transactional(rollbackFor = Exception.class)
+    public void executeSync(MetaDatasourceInfo datasourceInfo, BaseQueryTool queryTool) {
+        //查询表数据
+        List<TableInfo> tables = queryTool.getTables();
+        LocalDateTime now = LocalDateTime.now();
+        if (CollectionUtils.isNotEmpty(tables)) {
+            tables.stream().forEach(a -> {
+                MetaTableInfo tableInfo = new MetaTableInfo();
+                BeanUtils.copyProperties(a, tableInfo);
+                tableInfo.setDatasourceId(datasourceInfo.getId());
+                tableInfo.setDatabaseName(datasourceInfo.getDatabaseName());
+                tableInfo.setCreateTime(now);
+                tableInfo.setUpdateTime(now);
+                tableInfo.setDeleted(YesNoEnum.NO.getValue());
+                metaTableMapper.insert(tableInfo);
+                //保存表字段信息
+                saveFiledInfo(queryTool, tableInfo, now);
+            });
         }
     }
 
