@@ -13,7 +13,7 @@ CREATE DATABASE IF NOT EXISTS snow_meta DEFAULT CHARACTER SET utf8mb4 DEFAULT CO
 -- ----------------------------
 -- NACOS
 -- ----------------------------
-CREATE DATABASE IF NOT EXISTS nacos_config DEFAULT CHARACTER SET utf8mb4 DEFAULT COLLATE utf8mb4_general_ci;
+CREATE DATABASE IF NOT EXISTS snow_nacos DEFAULT CHARACTER SET utf8mb4 DEFAULT COLLATE utf8mb4_general_ci;
 
 
 

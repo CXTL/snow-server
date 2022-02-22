@@ -94,16 +94,29 @@ services:
       - /data/mongo/db:/data/db #数据文件挂载
     ports:
       - 27017:27017
-  nacos-registry:
+  nacos:
     image: nacos/nacos-server:1.4.0
-    container_name: nacos-registry
+    container_name: nacos
     restart: always
+    depends_on:
+      - mysql5.7
     environment:
-      - "MODE=standalone"
+      PREFER_HOST_MODE: 192.168.40.130 #如果支持主机名可以使用hostname,否则使用ip，默认也是ip
+      SPRING_DATASOURCE_PLATFORM: mysql #数据源平台 仅支持mysql或不保存empty
+      MODE: standalone
+      MYSQL_SERVICE_HOST: 192.168.40.130
+      MYSQL_SERVICE_DB_NAME: snow_nacos
+      MYSQL_SERVICE_PORT: 3306
+      MYSQL_SERVICE_USER: root
+      MYSQL_SERVICE_PASSWORD: 123456
+      NACOS_APPLICATION_PORT: 8848
+      JVM_XMS: 512m
+      JVM_MMS: 320m
     ports:
-      - 8848:8848
+      - "8848:8848"
   jobmanager:
     image: flink:1.13.0-scala_2.11
+    container_name: flink-job
     ports:
       - "8081:8081"
     command: jobmanager
@@ -114,6 +127,7 @@ services:
 
   taskmanager:
     image: flink:1.13.0-scala_2.11
+    container_name: flink-task
     depends_on:
       - jobmanager
     command: taskmanager
