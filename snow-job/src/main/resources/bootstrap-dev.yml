@@ -1,7 +1,19 @@
 spring:
   application:
     name: snow-job
-
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${nacos.host}:${nacos.port}
+        namespace: ${nacos.namespace}
+      config:
+        server-addr: ${nacos.host}:${nacos.port}
+        file-extension: yaml
+        namespace: ${nacos.namespace}
+        # 公共配置
+        shared-configs[0]:
+          data-id: snow-common.yaml
+          refresh: true
 
 
 
