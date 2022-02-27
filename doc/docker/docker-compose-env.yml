@@ -101,10 +101,10 @@ services:
     depends_on:
       - mysql5.7
     environment:
-      PREFER_HOST_MODE: 192.168.40.130 #如果支持主机名可以使用hostname,否则使用ip，默认也是ip
+      PREFER_HOST_MODE: 192.168.40.132 #如果支持主机名可以使用hostname,否则使用ip，默认也是ip
       SPRING_DATASOURCE_PLATFORM: mysql #数据源平台 仅支持mysql或不保存empty
       MODE: standalone
-      MYSQL_SERVICE_HOST: 192.168.40.130
+      MYSQL_SERVICE_HOST: 192.168.40.132
       MYSQL_SERVICE_DB_NAME: snow_nacos
       MYSQL_SERVICE_PORT: 3306
       MYSQL_SERVICE_USER: root
