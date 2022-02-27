@@ -54,7 +54,7 @@
         <ngdbc.version>2.3.48</ngdbc.version>
         <knife4j.version>3.0.3</knife4j.version>
 
-        <docker.host>http://192.168.40.130:2375</docker.host>
+        <docker.host>http://192.168.40.132:2375</docker.host>
         <docker.maven.plugin.version>1.2.2</docker.maven.plugin.version>
     </properties>
 
