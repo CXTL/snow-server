@@ -16,6 +16,7 @@
         <module>snow-job</module>
         <module>snow-meta</module>
         <module>snow-gateway</module>
+        <module>snow-demo</module>
     </modules>
 
 

@@ -25,3 +25,15 @@ http://localhost:18080/system/user/login
 
 部署
 > mvn clean package docker:build -DskipTests
+
+idea多服务 配置
+```
+<component name="RunDashboard">
+  <option name="configurationTypes">
+    <set>
+      <option value="SpringBootApplicationConfigurationType" />
+    </set>
+  </option>
+</component>
+
+```

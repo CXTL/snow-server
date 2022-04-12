@@ -1,4 +1,4 @@
-package com.snow.meta.config;
+package com.snow.commodity.config;
 
 import com.snow.redis.config.BaseRedisConfig;
 import org.springframework.context.annotation.Configuration;

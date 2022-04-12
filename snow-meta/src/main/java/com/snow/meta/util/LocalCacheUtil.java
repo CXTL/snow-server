@@ -5,12 +5,12 @@ import java.util.concurrent.ConcurrentMap;
 
 /**
  * local cache tool
- *
  */
 public class LocalCacheUtil {
 
     private static ConcurrentMap<String, LocalCacheData> cacheRepository = new ConcurrentHashMap<String, LocalCacheData>();   // 类型建议用抽象父类，兼容性更好；
-    private static class LocalCacheData{
+
+    private static class LocalCacheData {
         private String key;
         private Object val;
         private long timeoutTime;
@@ -58,13 +58,13 @@ public class LocalCacheUtil {
      * @param cacheTime
      * @return
      */
-    public static boolean set(String key, Object val, long cacheTime){
+    public static boolean set(String key, Object val, long cacheTime) {
 
         // clean timeout cache, before set new cache (avoid cache too much)
         cleanTimeoutCache();
 
         // set new cache
-        if (key==null || key.trim().length()==0) {
+        if (key == null || key.trim().length() == 0) {
             return false;
         }
         if (val == null) {
@@ -85,8 +85,8 @@ public class LocalCacheUtil {
      * @param key
      * @return
      */
-    public static boolean remove(String key){
-        if (key==null || key.trim().length()==0) {
+    public static boolean remove(String key) {
+        if (key == null || key.trim().length() == 0) {
             return false;
         }
         cacheRepository.remove(key);
@@ -99,12 +99,12 @@ public class LocalCacheUtil {
      * @param key
      * @return
      */
-    public static Object get(String key){
-        if (key==null || key.trim().length()==0) {
+    public static Object get(String key) {
+        if (key == null || key.trim().length() == 0) {
             return null;
         }
         LocalCacheData localCacheData = cacheRepository.get(key);
-        if (localCacheData!=null && System.currentTimeMillis()<localCacheData.getTimeoutTime()) {
+        if (localCacheData != null && System.currentTimeMillis() < localCacheData.getTimeoutTime()) {
             return localCacheData.getVal();
         } else {
             remove(key);
@@ -117,16 +117,25 @@ public class LocalCacheUtil {
      *
      * @return
      */
-    public static boolean cleanTimeoutCache(){
+    public static boolean cleanTimeoutCache() {
         if (!cacheRepository.keySet().isEmpty()) {
-            for (String key: cacheRepository.keySet()) {
+            for (String key : cacheRepository.keySet()) {
                 LocalCacheData localCacheData = cacheRepository.get(key);
-                if (localCacheData!=null && System.currentTimeMillis()>=localCacheData.getTimeoutTime()) {
+                if (localCacheData != null && System.currentTimeMillis() >= localCacheData.getTimeoutTime()) {
                     cacheRepository.remove(key);
                 }
             }
         }
         return true;
+    }
+
+    public static void main(String[] args) {
+        String databaseName = "zmtest";
+        String url = "jdbc:mysql://172.16.18.18:3306/?useSSL=false";
+        String beforeUrl = org.apache.commons.lang3.StringUtils.substringBefore(url, "?");
+        String afterUrl = org.apache.commons.lang3.StringUtils.substringAfter(url, "?");
+        url = beforeUrl + databaseName + "?" + afterUrl;
+        System.out.println(url);
     }
 
 }
