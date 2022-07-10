@@ -22,6 +22,7 @@
         <module>demo-order</module>
         <module>demo-pay</module>
         <module>demo-commodity</module>
+        <module>demo-study</module>
     </modules>
 
 </project>
